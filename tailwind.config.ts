@@ -6,7 +6,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        sans: ["var(--montserrat)", ...fontFamily.sans],
+      },
+      screens: {
+        "2xl": "1440px",
       },
     },
   },
