@@ -3,11 +3,12 @@
 
 import { sql } from "drizzle-orm";
 import {
-  bigint,
   index,
+  int,
   mysqlTableCreator,
   timestamp,
   varchar,
+  text,
 } from "drizzle-orm/mysql-core";
 
 /**
@@ -21,14 +22,16 @@ export const mysqlTable = mysqlTableCreator((name) => `learning-t3_${name}`);
 export const posts = mysqlTable(
   "post",
   {
-    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
+    id: int("id").primaryKey().autoincrement(),
     name: varchar("name", { length: 256 }),
+    content: text("content"),
+    authorId: varchar("authorId", { length: 11 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
   (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
+    authorIdIndex: index("authorId_idx").on(example.authorId),
+  }),
 );
