@@ -9,7 +9,7 @@ import { SignInButton, useUser } from "@clerk/nextjs";
 
 export default function Home() {
   const user = useUser();
-
+  console.log(user);
   const homeContent = () => {
     if (!user.isSignedIn) {
       return <SignInButton>Please login to proceed!</SignInButton>;
@@ -42,7 +42,7 @@ export default function Home() {
             onClick={() => sendGTMEvent(logoClicked)}
             className="font-bold"
           >
-            Chirp T3 - Theo Tutorial
+            Chirp T3 App
           </Link>
           <ClerkAuthButton />
         </div>
