@@ -1,10 +1,30 @@
 import Head from "next/head";
 import ClerkAuthButton from "~/components/ClerkAuthButton";
-import { api } from "~/utils/api";
+import Link from "next/link";
+import { sendGTMEvent } from "@next/third-parties/google";
+import { logoClicked } from "~/events/home";
+import Chirps from "~/components/Chirps";
+import ChirpEditor from "~/components/ChirpEditor";
+import { SignInButton, useUser } from "@clerk/nextjs";
 
 export default function Home() {
-  const { data } = api.post.getAll.useQuery();
-  console.log(data);
+  const user = useUser();
+
+  const homeContent = () => {
+    if (!user.isSignedIn) {
+      return <SignInButton>Please login to proceed!</SignInButton>;
+    }
+    if (user.isSignedIn) {
+      return (
+        <>
+          <ChirpEditor />
+          <Chirps />
+        </>
+      );
+    }
+    return null;
+  };
+
   return (
     <>
       <Head>
@@ -15,10 +35,21 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen items-start justify-start">
-        <div className="container mx-auto flex h-screen flex-col items-center justify-center px-4">
+      <header className="border-b border-b-slate-800">
+        <div className="container mx-auto flex items-center justify-between px-4 py-4">
+          <Link
+            href="/"
+            onClick={() => sendGTMEvent(logoClicked)}
+            className="font-bold"
+          >
+            Chirp T3 - Theo Tutorial
+          </Link>
           <ClerkAuthButton />
-          <pre>{JSON.stringify(data, null, 2)}</pre>
+        </div>
+      </header>
+      <main className="flex min-h-screen items-start justify-start">
+        <div className="container mx-auto flex h-screen flex-col items-center justify-start px-4 py-8">
+          {homeContent()}
         </div>
       </main>
     </>

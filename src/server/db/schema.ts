@@ -25,7 +25,7 @@ export const posts = mysqlTable(
     id: int("id").primaryKey().autoincrement(),
     name: varchar("name", { length: 256 }),
     content: text("content"),
-    authorId: varchar("authorId", { length: 11 }),
+    authorId: varchar("authorId", { length: 256 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
