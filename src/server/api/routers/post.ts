@@ -9,6 +9,8 @@ function filterUserForClient(user: User) {
   return {
     id: user.id,
     username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
     imageUrl: user.imageUrl,
   };
 }
