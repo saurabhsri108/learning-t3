@@ -6,10 +6,11 @@ import { logoClicked } from "~/events/home";
 import Chirps from "~/components/Chirps";
 import ChirpEditor from "~/components/ChirpEditor";
 import { SignInButton, useUser } from "@clerk/nextjs";
+import { api } from "~/utils/api";
 
 export default function Home() {
   const user = useUser();
-  console.log(user);
+  api.post.getAll.useQuery();
   const homeContent = () => {
     if (!user.isSignedIn) {
       return <SignInButton>Please login to proceed!</SignInButton>;

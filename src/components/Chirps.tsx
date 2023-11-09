@@ -2,6 +2,7 @@ import { api } from "~/utils/api";
 import Image from "next/image";
 import { speak } from "~/utils/speak";
 import { formatDistance } from "date-fns";
+import LoadingSpinner from "~/components/Loading";
 
 export default function Chirps() {
   const { data, isLoading } = api.post.getAll.useQuery();
@@ -9,11 +10,11 @@ export default function Chirps() {
   if (isLoading) {
     return (
       <section
-        className="mx-auto my-6 flex w-full max-w-2xl flex-col items-center justify-center gap-3"
+        className="mx-auto my-6 mt-16 flex w-full max-w-2xl flex-col items-center justify-center gap-3"
         tabIndex={0}
         onFocus={() => speak("Loading chirps...")}
       >
-        <p className="font-sans text-xl font-bold">Loading chirps...</p>
+        <LoadingSpinner size={64} />
       </section>
     );
   }
