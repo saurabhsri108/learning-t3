@@ -83,7 +83,6 @@ export const postRouter = createTRPCRouter({
           code: "TOO_MANY_REQUESTS",
           message: "Only 3 chirps allowed per minute",
         });
-      await new Promise((resolve) => setTimeout(resolve, 10000));
       const post = await ctx.db.insert(posts).values({
         name: input.name,
         authorId: ctx.userId,

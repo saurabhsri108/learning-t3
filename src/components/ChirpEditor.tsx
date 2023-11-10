@@ -37,7 +37,7 @@ export default function ChirpEditor() {
     <section className="flex w-full max-w-2xl items-start gap-3 px-4 py-4 shadow-lg shadow-slate-800">
       <Image
         src={user.imageUrl}
-        alt={user.username + "profile avatar" ?? "user profile avatar"}
+        alt={user.username + "profile avatar" ?? "handle profile avatar"}
         width={112}
         height={112}
         className="h-14 w-14 rounded-full"

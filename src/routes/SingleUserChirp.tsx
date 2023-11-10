@@ -6,7 +6,7 @@ import LoadingSpinner from "~/components/Loading";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function Chirps() {
+export default function SingleUserChirp() {
   const router = useRouter();
   const { data, isLoading } = api.post.getAll.useQuery();
 

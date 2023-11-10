@@ -15,7 +15,13 @@ const montserrat = Montserrat({ subsets: ["latin"], variable: "--montserrat" });
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
-      <main className={cn("font-sans", montserrat.variable)}>
+      <main
+        className={cn(
+          "font-sans",
+          montserrat.variable,
+          `flex h-screen flex-col`,
+        )}
+      >
         <Component {...pageProps} />
       </main>
       <GoogleTagManager gtmId="GTM-5BPLT28V" />
