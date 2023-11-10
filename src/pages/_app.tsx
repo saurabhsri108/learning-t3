@@ -8,6 +8,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { Montserrat } from "next/font/google";
 import cn from "~/utils/cn";
 import KShorts from "~/components/KShorts";
+import { Toaster } from "react-hot-toast";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--montserrat" });
 
@@ -18,6 +19,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <Component {...pageProps} />
       </main>
       <GoogleTagManager gtmId="GTM-5BPLT28V" />
+      <Toaster position="top-right" />
       <KShorts />
     </ClerkProvider>
   );

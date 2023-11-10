@@ -47,7 +47,7 @@ export default function Chirps() {
               }, ${formatDistance(new Date(chirp.createdAt), new Date(), {
                 includeSeconds: true,
                 addSuffix: true,
-              })}\n${chirp.content}`,
+              })}, ${chirp.content}`,
             )
           }
         >
